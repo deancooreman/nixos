@@ -72,7 +72,7 @@
   users.users.deancooreman = {
     isNormalUser = true;
     description = "Dean Cooreman";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -87,11 +87,33 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    discord
+    git
+    gnomeExtensions.proton-vpn-button
+    kdePackages.okular
+    neovim
+    onlyoffice-desktopeditors
+    protonvpn-gui
+    spotify
+    teams-for-linux
+    vagrant
     vim
     wget
-    git
-    neovim
+    wireshark
+    terminator
   ];
+
+  # Enable Virtualbox hypervisor
+  virtualisation.virtualbox.host.enable = true;
+
+  # Virtualbox Extensionpack
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+
+  # Default provider Vagrant
+  environment.sessionVariables = {
+    VAGRANT_DEFAULT_PROVIDER = "virtualbox";
+  };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
