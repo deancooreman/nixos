@@ -71,7 +71,7 @@
   users.users.deancooreman = {
     isNormalUser = true;
     description = "Dean Cooreman";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -87,6 +87,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     discord
+    distrobox
     git
     gnomeExtensions.proton-vpn-button
     kdePackages.okular
@@ -103,6 +104,9 @@
 
   # Enable Virtualbox hypervisor
   virtualisation.virtualbox.host.enable = true;
+
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   # Virtualbox Extensionpack
   virtualisation.virtualbox.host.enableExtensionPack = true;
