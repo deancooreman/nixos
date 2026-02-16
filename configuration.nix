@@ -1,10 +1,9 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+  # Help is available in the configuration.nix(5) man page
+  # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+  { config, pkgs, ... }:
 
-{
+  {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -35,8 +34,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   services.libinput.enable = true;
 
@@ -100,7 +99,6 @@
     vim
     wget
     wireshark
-    terminator
   ];
 
   # Enable Virtualbox hypervisor
@@ -141,5 +139,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
